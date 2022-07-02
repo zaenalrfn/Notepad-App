@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+h1 {
+	font-weight: 700;
+}
+.card h2 {
+	font-weight: 600;
+}
+.card p {
+	font-weight: 400;
+}
+.container .row {
+	height: 100vh;
+}
+.container .col-lg-6 {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	background-color: #EBECEF;
+}
+.btn-modal {
+	background-color: #06FF00;
+}
+.btn-modal:hover {
+	background-color: #000;
+}
+.addNote {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: relative;
+	cursor: pointer;
+	background-color: #06FF00;
+}
+.addNote i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	color: #fff;
+}
+.mainAdd {
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+}
+.card {
+	border: none;
+	margin-bottom: 10px;
+}
+.card p {
+	/*width: 100%;*/
+	margin-bottom: 5px;
+}
+.card .pCatatan {
+	width: 50%;
+	height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#isNote {
+	height: 550px;
+	overflow-y: scroll;
+}
+#isNote::-webkit-scrollbar{
+ display: none;
+}
+.card-action {
+	margin-top: 10px;
+}
+.card-date {
+	gap: 10px;
+}
+input[type=text], textarea.form-control {
+	border: none;
+}
+textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus {
+  box-shadow: inset 0 0 0 #fff;
+}
+@media screen and (max-width: 600px) {
+	.container .col-lg-6 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notepad App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+  </head>
+  <body>
+    
+    <main>
+      <div class="container">
+
+        <!-- Modal Buat -->
+        <div class="modal fade" id="Modal-Buat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content" id="content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Catatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="noteForm">
+                  <h6 class="mb-3" id="noteClock"></h6>
+                  <input type="text" name="noteInputTitle" id="noteInputTitle" placeholder="Judul" class="form-control mb-3">
+                  <div class="form-floating">
+                    <textarea class="form-control" id="noteInputCatatan" placeholder="Mencatat sesuatu"></textarea>
+                    <!-- <label for="noteInputCatatan">Mencatat sesuatu</label> -->
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn text-white btn-modal">Buat</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Edit -->
+        <div class="modal fade" id="Modal-Edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Catatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+               <form id="editNote">
+                <input type="text" name="editTitle" id="editTitle" class="form-control mb-3" placeholder="Judul">
+                <div class="form-floating">
+                  <textarea class="form-control" id="editCatatan" placeholder="Catatan"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn text-white btn-modal">Hapus</button>
+                </div>
+               </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h1 class="mt-1 mb-3">Catatan</h1>
+            <form id="serachCatatan">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" placeholder="Cari catatan" aria-describedby="basic-addon1">
+              </div>
+            </form>
+            <div id="isNote">
+              
+            </div>
+            <div class="mainAdd">
+              <div class="addNote" data-bs-toggle="modal" data-bs-target="#Modal-Buat">
+                <i class="bi bi-plus-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
