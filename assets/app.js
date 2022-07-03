@@ -1,5 +1,3 @@
-let noteArr = [];
-const noteEvent = 'NOTE_EVENT';
 document.addEventListener('DOMContentLoaded', function(){
 	const noteForm = document.getElementById('noteForm');
 	noteForm.addEventListener('submit', function(e) {
@@ -9,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	});
 	generateClock();
 	textAreaRisize();
+	if (isLocal()) {
+		fetchNote();
+	}
 });
 
 function textAreaRisize() {
@@ -19,22 +20,6 @@ function textAreaRisize() {
 			this.style.height = this.scrollHeight + "px"
 		})
 	}
-}
-
-function addNote() {
-	const noteInputTitle = document.getElementById('noteInputTitle').value;
-	const noteInputCatatan = document.getElementById("noteInputCatatan").value;
-	const noteId = +new Date();
-	const noteClock = generateClock();
-	const noteDay = generateDay();
-	const noteObject = generateNoteObject(noteId, noteInputTitle, noteInputCatatan, noteClock, noteDay);
-
-	noteArr.push(noteObject);
-	document.dispatchEvent(new Event(noteEvent));
-}
-
-function generateNoteObject(id, title, note, clock, days) {
-	return {id, title, note, clock, days}
 }
 
 function generateClock() {
@@ -103,11 +88,3 @@ function makeNote(noteObject) {
 	return noteCard
 }
 
-document.addEventListener(noteEvent, function() {
-	const isNote = document.getElementById('isNote');
-	isNote.innerHTML = ''
-	for(const noteItem of noteArr) {
-		isNote.append(makeNote(noteItem));
-	}
-	// renderNote();
-})
