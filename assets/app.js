@@ -109,4 +109,5 @@ document.addEventListener(noteEvent, function() {
 	for(const noteItem of noteArr) {
 		isNote.append(makeNote(noteItem));
 	}
+	// renderNote();
 })
