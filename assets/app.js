@@ -5,18 +5,25 @@ let isNoteObject = '';
 // bagian ketika content dom sudah di load
 document.addEventListener('DOMContentLoaded', function(){
 	const noteForm = document.getElementById('noteForm');
+	let buatNote = document.getElementById("buatNote");
 	noteForm.addEventListener('submit', function(e) {
 		const noteInputTitle = document.getElementById("noteInputTitle").value;
 		const noteInputCatatan = document.getElementById("noteInputCatatan").value;
-		let buatNote = document.getElementById("buatNote");
 		e.preventDefault();
 		if (noteInputTitle == '' && noteInputCatatan == '') {
-			alert("catatan belum diisi")
+			swal("Mohon isi catatan dulu!");
 		} else {
-			addNote();
+			swal({
+				text: "catatan berhasil dibuat!"
+			})
+			.then((text) => {
+				if (text) {
+					addNote();
+					noteForm.reset();
+					buatNote.removeAttribute("data-bs-dismiss", "modal");
+				}
+			})
 		}
-		noteForm.reset();
-		buatNote.setAttribute("data-bs-dismiss", "modal");
 	});
 	generateClock();
 	textAreaRisize();
@@ -32,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function(){
 			e.preventDefault()
 			noteSearch(searchNoteCatatan.value);
 		})
+	})
+	const addIsNote = document.querySelector(".addNote");
+	addIsNote.addEventListener('click', function() {
+		buatNote.setAttribute("data-bs-dismiss", "modal");
 	})
 });
 
@@ -175,7 +186,20 @@ function removeIsNote(noteObject) {
 	noteCard.append(noteCardBody);
 
 	btnRemoveNote.addEventListener('click', function() {
-		removeIsFormNote(noteObject.id);
+		swal({
+			text: "Yakin menghapus catatan ini?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				swal("Catatan berhasil dihapus!", {
+					icon: "success",
+				});
+				removeIsFormNote(noteObject.id);
+			}
+		});
 	})
 
 	return noteCard
@@ -196,6 +220,9 @@ const editNote = document.getElementById("editNote");
 editNote.addEventListener('submit', function(e) {
 	e.preventDefault();
 	if (isField === 'baru') {
+		swal({
+			text: "Berhasil mengedit catatan!"
+		})
 		editIsFormNote(isNoteObject);
 	}
 })
