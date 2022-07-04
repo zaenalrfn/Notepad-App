@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		if (noteInputTitle == '' && noteInputCatatan == '') {
 			alert("catatan belum diisi")
 		} else {
-			buatNote.setAttribute("data-bs-dismiss", "modal");
 			addNote();
 		}
 		noteForm.reset();
+		buatNote.setAttribute("data-bs-dismiss", "modal");
 	});
 	generateClock();
 	textAreaRisize();
@@ -45,7 +45,6 @@ function addNote() {
 	const noteObject = generateNoteObject(noteId, noteInputTitle, noteInputCatatan, noteClock, noteDay);
 
 	noteArr.push(noteObject);
-	console.log(noteArr)
 	document.dispatchEvent(new Event(noteEvent));
 	noteNote();
 }

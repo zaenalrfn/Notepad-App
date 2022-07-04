@@ -63,7 +63,7 @@ h1 {
 }
 .card .pCatatan {
 	width: 50%;
-	height: 20px;
+	height: 25px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
