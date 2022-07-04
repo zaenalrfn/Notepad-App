@@ -44,7 +44,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Catatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                <form id="editNote">
@@ -53,7 +52,7 @@
                   <textarea class="form-control" id="editCatatan" placeholder="Catatan"></textarea>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn text-white btn-modal">Hapus</button>
+                  <button type="submit" id="editIsNote" class="btn text-white btn-modal" data-bs-dismiss="modal"><i class="bi bi-pencil-square"></i></button>
                 </div>
                </form>
               </div>
@@ -61,13 +60,34 @@
           </div>
         </div>
 
+
+        <!-- Modal Hapus -->
+        <div class="modal fade" id="Modal-Hapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Catatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div id="isNoteHapus">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- bagian item note -->
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h1 class="mt-1 mb-3">Catatan</h1>
             <form id="serachCatatan">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control" placeholder="Cari catatan" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="trashNote" data-bs-toggle="modal" data-bs-target="#Modal-Hapus">
+                  <i class="bi bi-trash" id="noteIsTrue"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Cari catatan">
               </div>
             </form>
             <div id="isNote">
