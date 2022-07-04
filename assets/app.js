@@ -6,8 +6,16 @@ let isNoteObject = '';
 document.addEventListener('DOMContentLoaded', function(){
 	const noteForm = document.getElementById('noteForm');
 	noteForm.addEventListener('submit', function(e) {
+		const noteInputTitle = document.getElementById("noteInputTitle").value;
+		const noteInputCatatan = document.getElementById("noteInputCatatan").value;
+		let buatNote = document.getElementById("buatNote");
 		e.preventDefault();
-		addNote();
+		if (noteInputTitle == '' && noteInputCatatan == '') {
+			alert("catatan belum diisi")
+		} else {
+			buatNote.setAttribute("data-bs-dismiss", "modal");
+			addNote();
+		}
 		noteForm.reset();
 	});
 	generateClock();
@@ -16,6 +24,15 @@ document.addEventListener('DOMContentLoaded', function(){
 	if (isLocal()) {
 		fetchNote();
 	}
+	const searchCatatan = document.getElementById("searchCatatan");
+	const searchNoteCatatan = document.getElementById("searchNoteCatatan");
+	searchNoteCatatan.addEventListener('input', function() {
+		noteSearch(searchNoteCatatan.value);
+		searchCatatan.addEventListener('submit', function(e) {
+			e.preventDefault()
+			noteSearch(searchNoteCatatan.value);
+		})
+	})
 });
 
 // bagian menambahkan note
@@ -211,6 +228,20 @@ function findToIndex(noteId) {
 		}
 	}
 	return -1
+}
+
+// bagian mengfilter search note bedasarkan title
+function noteSearch(keyword) {
+	const titleFilter = keyword.toUpperCase();
+	const titleTagElement = document.getElementsByTagName('h2');
+	for(let i = 0; i < titleTagElement.length; i++) {
+		const titleText = titleTagElement[i].innerText || titleTagElement[i].textContent
+		if (titleText.toUpperCase().indexOf(titleFilter) > -1) {
+			titleTagElement[i].closest(".card").style.display = "";
+		} else {
+			titleTagElement[i].closest(".card").style.display = "none";
+		}
+	}
 }
 
 // Event render note memasukkan data array ke element isNote dan isNoteHapus

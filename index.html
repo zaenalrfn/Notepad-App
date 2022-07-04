@@ -30,7 +30,7 @@
                     <!-- <label for="noteInputCatatan">Mencatat sesuatu</label> -->
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn text-white btn-modal">Buat</button>
+                    <button type="submit" class="btn text-white btn-modal" id="buatNote">Buat</button>
                   </div>
                 </form>
               </div>
@@ -82,12 +82,12 @@
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h1 class="mt-1 mb-3">Catatan</h1>
-            <form id="serachCatatan">
+            <form id="searchCatatan">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="trashNote" data-bs-toggle="modal" data-bs-target="#Modal-Hapus">
                   <i class="bi bi-trash" id="noteIsTrue"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Cari catatan">
+                <input type="text" id="searchNoteCatatan" class="form-control" placeholder="Cari catatan">
               </div>
             </form>
             <div id="isNote">
