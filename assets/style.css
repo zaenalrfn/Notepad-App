@@ -32,8 +32,11 @@ h1 {
 	border-radius: 5px;
 	background-color: var(--color-d);
 }
-.btn-modal {
+.btn-modal, .swal-button--confirm {
 	background-color: #06FF00;
+}
+.swal-button--danger {
+	background-color: rgb(220 53 69);
 }
 .btn-modal:hover {
 	background-color: #000;
@@ -81,7 +84,6 @@ h1 {
 	height: 80vh;
 	margin-bottom: 10px;
 	overflow-y: scroll;
-	/*background-color: rebeccapurple;*/
 }
 #isNote::-webkit-scrollbar{
  display: none;

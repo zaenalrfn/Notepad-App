@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			swal("Mohon isi catatan dulu!");
 		} else {
 			swal({
-				text: "catatan berhasil dibuat!"
+				text: "catatan berhasil dibuat!",
+				icon: "success"
 			})
 			.then((text) => {
 				if (text) {
@@ -54,7 +55,6 @@ function addNote() {
 	const noteClock = generateClock();
 	const noteDay = generateDay();
 	const noteObject = generateNoteObject(noteId, noteInputTitle, noteInputCatatan, noteClock, noteDay);
-
 	noteArr.push(noteObject);
 	document.dispatchEvent(new Event(noteEvent));
 	noteNote();
@@ -77,9 +77,8 @@ function generateClock() {
 	const date = new Date()
 	let h = date.getHours()
 	let m = date.getMinutes()
-
 	m = (m < 10) ? "0" + m : m;
-	const result = h + ":" + m; 
+	const result = h + ":" + m;
 	noteClock.innerText = result
 	return result + ","
 }
@@ -99,6 +98,7 @@ function generateDay() {
 
 // bagian item note yang sudah ditambahkan
 function makeNote(noteObject) {
+
 	const noteTitle = document.createElement("h2");
 	noteTitle.innerText = noteObject.title;
 
@@ -209,6 +209,10 @@ function removeIsNote(noteObject) {
 var editTitle = document.getElementById("editTitle"),
 editCatatan = document.getElementById("editCatatan");
 function fieldNote(noteObject) {
+	const notedateEdit = document.getElementById("notedateEdit");
+	notedateEdit.innerText = noteObject.days;
+	const noteClockEdit = document.getElementById("noteClockEdit");
+	noteClockEdit.innerText = noteObject.clock
 	editTitle.value = noteObject.title;
 	editCatatan.value = noteObject.note;
 	isField = 'baru';
@@ -220,7 +224,8 @@ editNote.addEventListener('submit', function(e) {
 	e.preventDefault();
 	if (isField === 'baru') {
 		swal({
-			text: "Berhasil mengedit catatan!"
+			text: "Berhasil mengedit catatan!",
+			icon: "success",
 		})
 		editIsFormNote(isNoteObject);
 	}
@@ -281,9 +286,4 @@ document.addEventListener(noteEvent, function() {
 		isNoteHapus.append(removeIsNote(noteItem));
 	}
 
-
-
 }) 
-
-
-
