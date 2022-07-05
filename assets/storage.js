@@ -2,13 +2,10 @@ const noteFetch = 'FETCH_EVENT';
 const noteKey = 'NOTE_KEY';
 let noteArr = [];
 
-
-
 // bagian object note
 function generateNoteObject(id, title, note, clock, days) {
 	return {id, title, note, clock, days}
 }
-
 
 // mengecek apakah Storage dibrowser ada?
 function isLocal() {

@@ -87,8 +87,8 @@ function generateClock() {
 // bagian membuat bulan
 function generateDay() {
 	const nameMonth = [
-		"January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December"
+	"January", "February", "March", "April", "May", "June",
+	"July", "August", "September", "October", "November", "December"
 	];
 	const d = new Date()
 	let date = d.getDate();
@@ -115,11 +115,11 @@ function makeNote(noteObject) {
 	noteClock.innerText = noteObject.clock;
 
 	const noteLihat = document.createElement("button");
-	noteLihat.innerText = 'Lihat';
+	noteLihat.innerHTML = '<i class="bi bi-check-circle"></i>';
 	noteLihat.setAttribute("data-bs-toggle", "modal");
 	noteLihat.setAttribute("data-bs-target", "#Modal-Edit");
 	noteLihat.setAttribute("id", "lihatNote");
-	noteLihat.classList.add("btn", "bg-dark" , "text-white");
+	noteLihat.classList.add("btn", "btn-modal", "text-white");
 
 	const carddate = document.createElement("div");
 	carddate.classList.add("card-date" , "d-flex");
@@ -137,13 +137,11 @@ function makeNote(noteObject) {
 	noteCard.classList.add("card");
 	noteCard.setAttribute("id", `${noteObject.id}`);
 	noteCard.append(noteCardBody);
-
 	// bagian edit note
 	noteLihat.addEventListener('click', function(e) {
 		e.stopPropagation();
 		fieldNote(noteObject);
 	});
-
 	return noteCard
 }
 
@@ -165,7 +163,7 @@ function removeIsNote(noteObject) {
 	noteClock.innerText = noteObject.clock;
 
 	const btnRemoveNote = document.createElement("button");
-	btnRemoveNote.innerText = 'Hapus';
+	btnRemoveNote.innerHTML = '<i class="bi bi-trash"></i>';
 	btnRemoveNote.classList.add("btn", "text-white", "btn-danger")
 
 	const carddate = document.createElement("div");
@@ -206,9 +204,10 @@ function removeIsNote(noteObject) {
 }
 
 
+
 // bagian mengisi input lihat dan edit
 var editTitle = document.getElementById("editTitle"),
-	editCatatan = document.getElementById("editCatatan");
+editCatatan = document.getElementById("editCatatan");
 function fieldNote(noteObject) {
 	editTitle.value = noteObject.title;
 	editCatatan.value = noteObject.note;
@@ -242,7 +241,7 @@ function editIsFormNote(isNoteId) {
 function removeIsFormNote(noteId) {
 	const noteTarget = findToIndex(noteId);
 	if (noteTarget === null) return
-	noteArr.splice(noteTarget, 1);
+		noteArr.splice(noteTarget, 1);
 	document.dispatchEvent(new Event(noteEvent))
 	noteNote();
 }
@@ -270,6 +269,7 @@ function noteSearch(keyword) {
 	}
 }
 
+
 // Event render note memasukkan data array ke element isNote dan isNoteHapus
 document.addEventListener(noteEvent, function() {
 	const isNote = document.getElementById('isNote');
@@ -280,9 +280,10 @@ document.addEventListener(noteEvent, function() {
 		isNote.append(makeNote(noteItem));
 		isNoteHapus.append(removeIsNote(noteItem));
 	}
+
+
+
 }) 
-
-
 
 
 
